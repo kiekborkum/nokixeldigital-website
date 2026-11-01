@@ -1,12 +1,1231 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NOKIXEL DIGITAL</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NOKIXEL DIGITAL — Besondere Orte. Echte Geschichten.</title>
+
+    <meta
+        name="description"
+        content="NOKIXEL DIGITAL entwickelt digitale Formate für Menschen, die Orte genauer entdecken möchten."
+    >
+
+    <meta name="theme-color" content="#201D19">
+
+    <style>
+        :root {
+            --ink: #201D19;
+            --paper: #F3EDE1;
+            --paper-light: #FAF7F1;
+            --warm: #C99D68;
+            --muted: #716B62;
+            --line: rgba(32, 29, 25, 0.14);
+            --line-light: rgba(243, 237, 225, 0.16);
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background: var(--paper);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+
+        header {
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            background: rgba(32, 29, 25, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border-bottom: 1px solid rgba(243,237,225,.08);
+        }
+
+        .nav {
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .brand {
+            color: var(--paper);
+
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: .09em;
+            text-decoration: none;
+        }
+
+        .brand span {
+            color: rgba(243,237,225,.48);
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: rgba(243,237,225,.62);
+
+            font-size: .85rem;
+            font-weight: 650;
+
+            text-decoration: none;
+
+            transition: color .2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--paper);
+        }
+
+        /* HERO */
+
+        .hero {
+            position: relative;
+
+            min-height: 900px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 150px 0 110px;
+
+            overflow: hidden;
+
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 2;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 28px;
+
+            color: rgba(243,237,225,.52);
+
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+
+        .status::before {
+            content: "";
+
+            width: 28px;
+            height: 1px;
+
+            background: var(--warm);
+        }
+
+        h1 {
+            max-width: 760px;
+
+            margin-bottom: 30px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            color: var(--paper);
+
+            font-size: clamp(4.4rem, 8vw, 8rem);
+            font-weight: 500;
+
+            line-height: .92;
+            letter-spacing: -.055em;
+        }
+
+        h1 span {
+            display: block;
+
+            margin-top: 12px;
+
+            color: var(--warm);
+
+            font-style: italic;
+        }
+
+        .hero-copy {
+            max-width: 590px;
+
+            color: rgba(243,237,225,.62);
+
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            line-height: 1.75;
+        }
+
+        .hero-note {
+            margin-top: 36px;
+
+            color: rgba(243,237,225,.34);
+
+            font-size: .76rem;
+            font-weight: 650;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        /* ABSTRACT MAP */
+
+        .visual {
+            position: relative;
+
+            min-height: 610px;
+        }
+
+        .visual-card {
+            position: absolute;
+
+            inset: 0;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(243,237,225,.12);
+            border-radius: 42px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.045),
+                    rgba(255,255,255,.012)
+                );
+        }
+
+        .visual-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+            height: 400px;
+
+            right: -170px;
+            top: -150px;
+
+            border: 1px solid rgba(243,237,225,.08);
+            border-radius: 50%;
+        }
+
+        .visual-label {
+            position: absolute;
+
+            z-index: 4;
+
+            top: 28px;
+            left: 28px;
+
+            color: rgba(243,237,225,.43);
+
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .route-map {
+            position: absolute;
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+        }
+
+        .route {
+            fill: none;
+            stroke: rgba(243,237,225,.20);
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .route-primary {
+            stroke: var(--warm);
+            stroke-width: 2;
+        }
+
+        .route-soft {
+            stroke: rgba(243,237,225,.08);
+        }
+
+        .point {
+            fill: var(--ink);
+            stroke: rgba(243,237,225,.55);
+            stroke-width: 1.5;
+        }
+
+        .point-accent {
+            fill: var(--warm);
+            stroke: var(--paper);
+            stroke-width: 2;
+        }
+
+        /* SILHOUETTES */
+
+        .silhouette-row {
+            position: absolute;
+
+            z-index: 3;
+
+            left: 34px;
+            right: 34px;
+            bottom: 34px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .silhouette {
+            height: 116px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+            align-items: flex-end;
+
+            padding: 16px;
+
+            border: 1px solid rgba(243,237,225,.09);
+            border-radius: 20px;
+
+            background: rgba(243,237,225,.035);
+        }
+
+        .silhouette svg {
+            width: 100%;
+            height: 65px;
+        }
+
+        .silhouette path,
+        .silhouette rect,
+        .silhouette polygon,
+        .silhouette circle {
+            fill: rgba(243,237,225,.45);
+        }
+
+        .silhouette:nth-child(2) path,
+        .silhouette:nth-child(2) rect,
+        .silhouette:nth-child(2) polygon {
+            fill: rgba(201,157,104,.64);
+        }
+
+        /* INTRO */
+
+        section {
+            padding: 120px 0;
+        }
+
+        .eyebrow {
+            margin-bottom: 18px;
+
+            color: var(--warm);
+
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            max-width: 880px;
+
+            margin-bottom: 30px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            color: var(--ink);
+
+            font-size: clamp(2.8rem, 5vw, 5rem);
+            font-weight: 500;
+
+            line-height: 1.02;
+            letter-spacing: -.045em;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 90px;
+            align-items: start;
+        }
+
+        .intro-lead {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            color: var(--ink);
+
+            font-size: clamp(1.7rem, 3vw, 2.5rem);
+            line-height: 1.3;
+        }
+
+        .intro-copy {
+            color: var(--muted);
+
+            font-size: 1.08rem;
+            line-height: 1.85;
+        }
+
+        /* PRINCIPLES */
+
+        .principles {
+            background: var(--paper-light);
+        }
+
+        .principle-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 1px;
+
+            margin-top: 62px;
+
+            background: var(--line);
+        }
+
+        .principle {
+            min-height: 320px;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 32px;
+
+            background: var(--paper-light);
+        }
+
+        .number {
+            margin-bottom: auto;
+
+            color: var(--warm);
+
+            font-size: .72rem;
+            font-weight: 850;
+            letter-spacing: .1em;
+        }
+
+        .principle h3 {
+            margin-bottom: 12px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 1.65rem;
+            font-weight: 500;
+        }
+
+        .principle p {
+            color: var(--muted);
+
+            font-size: .94rem;
+            line-height: 1.7;
+        }
+
+        /* DARK TEASER */
+
+        .teaser {
+            position: relative;
+
+            overflow: hidden;
+
+            color: var(--paper);
+
+            background: var(--ink);
+        }
+
+        .teaser-inner {
+            min-height: 520px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            position: relative;
+            z-index: 2;
+        }
+
+        .teaser h2 {
+            color: var(--paper);
+        }
+
+        .teaser-copy {
+            max-width: 660px;
+
+            color: rgba(243,237,225,.56);
+
+            font-size: 1.08rem;
+            line-height: 1.8;
+        }
+
+        .ghost-route {
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            right: -80px;
+            top: -80px;
+
+            opacity: .55;
+        }
+
+        /* ORIGIN */
+
+        .origin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 80px;
+            align-items: center;
+        }
+
+        .origin-word {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: clamp(5rem, 10vw, 9rem);
+            line-height: .9;
+            letter-spacing: -.07em;
+
+            color: var(--ink);
+        }
+
+        .origin-word span {
+            display: block;
+
+            margin-top: 16px;
+
+            color: var(--warm);
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .origin-copy {
+            color: var(--muted);
+
+            font-size: 1.05rem;
+            line-height: 1.85;
+        }
+
+        .origin-copy p + p {
+            margin-top: 18px;
+        }
+
+        /* FINAL */
+
+        .final {
+            text-align: center;
+
+            background: var(--paper-light);
+        }
+
+        .final h2 {
+            margin-left: auto;
+            margin-right: auto;
+
+            max-width: 800px;
+        }
+
+        .final-copy {
+            max-width: 620px;
+
+            margin: 0 auto;
+
+            color: var(--muted);
+
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .coming {
+            display: inline-flex;
+
+            margin-top: 34px;
+            padding: 12px 18px;
+
+            border: 1px solid var(--line);
+            border-radius: 100px;
+
+            color: var(--ink);
+
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 44px 0;
+
+            color: rgba(243,237,225,.45);
+            background: #151310;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 30px;
+
+            font-size: .8rem;
+        }
+
+        .footer-brand {
+            color: var(--paper);
+
+            font-weight: 800;
+            letter-spacing: .08em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: rgba(243,237,225,.45);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--paper);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-grid,
+            .intro-grid,
+            .origin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-grid {
+                gap: 75px;
+            }
+
+            .visual {
+                min-height: 560px;
+            }
+
+            .principle-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .principle {
+                min-height: 250px;
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .container {
+                width: calc(100% - 28px);
+            }
+
+            section {
+                padding: 85px 0;
+            }
+
+            .nav-link {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 130px;
+                padding-bottom: 85px;
+            }
+
+            h1 {
+                font-size: clamp(3.8rem, 17vw, 5.6rem);
+            }
+
+            .visual {
+                min-height: 500px;
+            }
+
+            .visual-card {
+                border-radius: 28px;
+            }
+
+            .silhouette-row {
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+
+                grid-template-columns: 1fr;
+            }
+
+            .silhouette {
+                height: 80px;
+            }
+
+            .silhouette:nth-child(2),
+            .silhouette:nth-child(3) {
+                display: none;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+            }
+
+        }
+
+    </style>
 </head>
+
 <body>
-  <h1>NOKIXEL DIGITAL</h1>
-  <p>Besondere Orte. Echte Geschichten.</p>
+
+<header>
+    <div class="container nav">
+
+        <a class="brand" href="#">
+            NOKIXEL <span>DIGITAL</span>
+        </a>
+
+        <a class="nav-link" href="#about">
+            Über NOKIXEL
+        </a>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="container hero-grid">
+
+            <div>
+
+                <div class="status">
+                    Im Aufbau
+                </div>
+
+                <h1>
+                    Besondere Orte.
+                    <span>Echte Geschichten.</span>
+                </h1>
+
+                <p class="hero-copy">
+                    Digitale Formate für Menschen,
+                    die genauer hinschauen.
+                </p>
+
+                <div class="hero-note">
+                    NOKIXEL DIGITAL
+                </div>
+
+            </div>
+
+
+            <div class="visual">
+
+                <div class="visual-card">
+
+                    <div class="visual-label">
+                        Wege · Orte · Perspektiven
+                    </div>
+
+                    <svg
+                        class="route-map"
+                        viewBox="0 0 600 700"
+                        preserveAspectRatio="none"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            class="route route-soft"
+                            d="M-20 95
+                               C120 50 160 210 295 170
+                               C430 130 455 25 650 65"
+                        />
+
+                        <path
+                            class="route"
+                            d="M-30 285
+                               C95 245 130 350 240 315
+                               C365 275 390 185 505 220
+                               C580 245 600 325 650 300"
+                        />
+
+                        <path
+                            class="route route-primary"
+                            d="M25 510
+                               C130 455 145 365 245 395
+                               C350 430 390 535 490 475
+                               C550 440 560 360 640 380"
+                        />
+
+                        <path
+                            class="route route-soft"
+                            d="M120 720
+                               C120 590 225 560 190 470
+                               C150 365 75 320 130 225"
+                        />
+
+                        <circle
+                            class="point"
+                            cx="130"
+                            cy="470"
+                            r="8"
+                        />
+
+                        <circle
+                            class="point-accent"
+                            cx="245"
+                            cy="395"
+                            r="10"
+                        />
+
+                        <circle
+                            class="point"
+                            cx="490"
+                            cy="475"
+                            r="7"
+                        />
+
+                        <circle
+                            class="point"
+                            cx="390"
+                            cy="185"
+                            r="6"
+                        />
+
+                    </svg>
+
+
+                    <div class="silhouette-row">
+
+                        <!-- abstrakte Küste / Seezeichen -->
+                        <div class="silhouette">
+
+                            <svg viewBox="0 0 180 70" aria-hidden="true">
+
+                                <path
+                                    d="M0 58
+                                       C25 44 42 54 62 45
+                                       C83 36 105 52 126 41
+                                       C145 31 163 38 180 32
+                                       L180 70
+                                       L0 70 Z"
+                                />
+
+                                <rect x="112" y="15" width="9" height="35"/>
+                                <polygon points="108,15 125,15 117,5"/>
+
+                            </svg>
+
+                        </div>
+
+
+                        <!-- abstrakte historische Stadt -->
+                        <div class="silhouette">
+
+                            <svg viewBox="0 0 180 70" aria-hidden="true">
+
+                                <rect x="12" y="38" width="32" height="28"/>
+                                <polygon points="8,38 28,20 48,38"/>
+
+                                <rect x="55" y="27" width="40" height="39"/>
+                                <polygon points="50,27 75,9 100,27"/>
+
+                                <rect x="107" y="34" width="26" height="32"/>
+                                <polygon points="103,34 120,19 137,34"/>
+
+                                <rect x="143" y="42" width="26" height="24"/>
+
+                            </svg>
+
+                        </div>
+
+
+                        <!-- abstrakte urbane Silhouette -->
+                        <div class="silhouette">
+
+                            <svg viewBox="0 0 180 70" aria-hidden="true">
+
+                                <rect x="7" y="42" width="29" height="25"/>
+                                <rect x="45" y="25" width="22" height="42"/>
+                                <rect x="78" y="36" width="36" height="31"/>
+                                <rect x="124" y="15" width="18" height="52"/>
+                                <rect x="151" y="34" width="22" height="33"/>
+
+                            </svg>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="container intro-grid">
+
+            <div>
+
+                <div class="eyebrow">
+                    NOKIXEL DIGITAL
+                </div>
+
+                <div class="intro-lead">
+                    Orte haben mehr als eine Oberfläche.
+                </div>
+
+            </div>
+
+
+            <div class="intro-copy">
+
+                <p>
+                    Wir entwickeln digitale Konzepte,
+                    die den Blick auf Orte verändern.
+                </p>
+
+                <p style="margin-top:18px;">
+                    Nicht lauter. Nicht schneller.
+                    Sondern genauer.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRINCIPLES -->
+
+    <section class="principles">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                Unser Ansatz
+            </div>
+
+            <h2>
+                Entdecken beginnt
+                mit Hinsehen.
+            </h2>
+
+            <div class="principle-grid">
+
+                <article class="principle">
+
+                    <div class="number">
+                        01
+                    </div>
+
+                    <h3>Orte</h3>
+
+                    <p>
+                        Reale Orte stehen im Mittelpunkt.
+                        Die digitale Ebene ergänzt,
+                        was vor Ort nicht sofort sichtbar ist.
+                    </p>
+
+                </article>
+
+
+                <article class="principle">
+
+                    <div class="number">
+                        02
+                    </div>
+
+                    <h3>Perspektiven</h3>
+
+                    <p>
+                        Ein anderer Blick kann aus etwas
+                        Alltäglichem eine Entdeckung machen.
+                    </p>
+
+                </article>
+
+
+                <article class="principle">
+
+                    <div class="number">
+                        03
+                    </div>
+
+                    <h3>Geschichten</h3>
+
+                    <p>
+                        Hinter jedem besonderen Ort
+                        steckt mehr als das,
+                        was man auf den ersten Blick sieht.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TEASER -->
+
+    <section class="teaser">
+
+        <svg
+            class="ghost-route"
+            viewBox="0 0 700 700"
+            aria-hidden="true"
+        >
+            <path
+                d="M30 610
+                   C120 520 110 380 230 340
+                   C360 295 385 455 500 390
+                   C590 340 555 185 690 115"
+                fill="none"
+                stroke="rgba(243,237,225,.12)"
+                stroke-width="2"
+            />
+
+            <circle
+                cx="230"
+                cy="340"
+                r="9"
+                fill="#C99D68"
+            />
+
+            <circle
+                cx="500"
+                cy="390"
+                r="7"
+                fill="rgba(243,237,225,.4)"
+            />
+        </svg>
+
+
+        <div class="container teaser-inner">
+
+            <div class="eyebrow">
+                In Entwicklung
+            </div>
+
+            <h2>
+                Erste Wege
+                sind bereits gezeichnet.
+            </h2>
+
+            <p class="teaser-copy">
+                Neue digitale Formate entstehen derzeit.
+                Mehr zeigen wir, wenn es so weit ist.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ORIGIN -->
+
+    <section>
+
+        <div class="container origin-grid">
+
+            <div class="origin-word">
+
+                Nokixel
+
+                <span>
+                    Herkunft trifft Zukunft
+                </span>
+
+            </div>
+
+
+            <div class="origin-copy">
+
+                <p>
+                    Der Name NOKIXEL hat seine Wurzeln
+                    im niederdeutschen Sprachraum und trägt
+                    die Idee des Nachschauens und Entdeckens
+                    bereits in sich.
+                </p>
+
+                <p>
+                    NOKIXEL DIGITAL denkt diesen Gedanken weiter:
+                    für reale Orte in einer digitalen Welt.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section class="final">
+
+        <div class="container">
+
+            <div class="eyebrow">
+                NOKIXEL DIGITAL
+            </div>
+
+            <h2>
+                Es gibt noch mehr
+                zu entdecken.
+            </h2>
+
+            <p class="final-copy">
+                Wir bauen gerade.
+                Diese Seite wächst gemeinsam mit unseren Projekten.
+            </p>
+
+            <div class="coming">
+                More soon
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container footer">
+
+        <div>
+
+            <div class="footer-brand">
+                NOKIXEL DIGITAL
+            </div>
+
+            <div style="margin-top:6px;">
+                © <span id="year"></span>
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="impressum.html">
+                Impressum
+            </a>
+
+            <a href="datenschutz.html">
+                Datenschutz
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
 </body>
 </html>
